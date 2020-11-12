@@ -202,7 +202,7 @@
 <body>
   <div class="startnow-button">
     <button onclick="document.getElementById('id01').style.display='block'"
-      style=width:500px;height:70px;>เริ่มต้นลงทะเบียนล่าช้า</button>
+      style=width:500px;height:70px;background-color:#ff7f50;>เริ่มต้นลงทะเบียนล่าช้า</button>
   </div>
   <div id="id01" class="modal">
 
@@ -214,7 +214,7 @@
           class="avatar">
       </div>
 
-      <div class="container">
+      <div class="container" >
         <div class="form-group">
           <label for="user" class="my-text-info">เข้าสู่ระบบ(นักศึกษา/บุคลากร):</label>
           <input type="text" name="user" id="user" class="form-control" placeholder="เลขทะเบียนนักศึกษา" />
@@ -271,7 +271,7 @@
       formBody.push(encodeURIComponent("pwd") + '=' + encodeURIComponent(pw));
       formBody = formBody.join("&").replace(/%20/g, '+');
       console.log(formBody);
-      postData('http://localhost:5000/login', formBody)
+      postData('/login', formBody)
         .then(data => {
           console.log(data);
           if (data.status) {
