@@ -4,7 +4,7 @@
 var express = require("express");
 var path = require("path");
 var https = require("https");
-var http = require("https");
+var http = require("http");
 var bodyParser = require("body-parser");
 const jwt = require("jwt-simple");
 const passport = require("passport");
@@ -12,13 +12,36 @@ const passport = require("passport");
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 //ใช้ในการประกาศ Strategy
 const JwtStrategy = require("passport-jwt").Strategy;
+const mongoose = require("mongoose");
 var cookieParser = require('cookie-parser');
 
 
 var PORT = process.env.PORT || 5000;
 var app = express();
 
+app.use(express.json());
+
 const SECRET = "5555";
+require("dotenv").config({ path: '.env'});
+
+console.log(process.env.DATABASE);
+mongoose.connect(process.env.DATABASE,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  }
+);
+
+mongoose.Promise = global.Promise;
+mongoose.connection.on('error', (err) => {
+  console.error(`DataBase connection error -> ${err.massage}`);
+});
+
+// const connection = mongoose.connection;
+
+// connection.once("open", function() {
+//   console.log("MongoDB database connection established successfully");
+// });
 
 var cookieExtractor = function(req) {
   var token = null;
@@ -73,6 +96,7 @@ app.get("/", function (req, res) {
 app.get("/test", requireJWTAuth, function (req, res) {
   res.send("test");
 });
+
 app.get("/welcome/:id", requireJWTAuth, async function(req, res){ 
   var name_id = req.params.id;
   const data = await getStudentInfo(name_id);
@@ -165,6 +189,26 @@ app.post("/signin", async (req, res) => {
   }
 
 });
+
+const PostsSchma = new mongoose.Schema({
+    title: {
+        type: String
+    },
+    name: {
+        type: String
+    }
+
+});
+let Posts = mongoose.model('registration_docs', PostsSchma);
+
+app.get('/getpost', async (req, res) => {
+  console.log('getpost');
+  console.log(Posts);
+  const posts = await Posts.find();
+  console.log(posts);
+  res.json(posts);
+});
+
 
 const getlogin = (userName, password) => {
   return new Promise((resolve, reject) => {

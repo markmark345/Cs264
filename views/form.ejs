@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <style> 
-  .posOfSub{
+<style>
+  .posOfSub {
     margin-top: 20px;
     margin-left: 890px;
- }
-  </style>
+  }
+</style>
+
 <head>
   <%- include('header') -%>
 </head>
 
 <body>
-  
-    <%- include('navbar') -%>
+
+  <%- include('navbar') -%>
 
   <header class="container">
     <nav aria-label="breadcrumb-fu">
@@ -23,7 +24,100 @@
       </ol>
     </nav>
   </header>
-   
+
+  <!-- <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              ชื่อ: <%= name_th %>
+            </div>
+            <div class="col-md-4">
+              เลขทะเบียน: <%= name_id %>
+            </div>
+            <div class="col-md-4">
+              <label for="inputState">ชั้นปีที่</label>
+              <select id="inputState" class="form-control">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              คณะ: <%= faculty %> 
+            </div>
+            <div class="col-md-6">
+              สาขา: <%= department %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <form>
+      <div class="card">
+        <div class="container">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Password</label>
+              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">State</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="inputZip">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div> -->
+
+  <!--แบบฟอร์มอันแรกนะใครอยากใช้อันนี้้ก็ได้-->
   <div class="container">
     
   
@@ -148,20 +242,20 @@
       </form>
     </div>
     <br>
-    <%- include('footer') -%> 
+    
     </div>
      
-  </div>
-   
+  </div> 
+
   <script>
     function myFunction() {
       alert("ลงทะเบียนคำขอของรายวิชาเสร็จสิ้น");
     }
-    </script>
-   
- 
+  </script>
 
-   
+  <%- include('footer') -%>
+
+
 </body>
 
 </html>
